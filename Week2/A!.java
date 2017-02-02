@@ -2,8 +2,10 @@ import java.io.*;
 import java.util.*;
 
 public class Exercise1{
-	private ArrayList<DataRow> rows = new ArrayList<DataRow>(){{for(int i = 0; i < DataRow.MEMORY.size(); i++)
-		rows.add(new DataRow(DataRow.MEMORY.get(i), " "));}};
+	private ArrayList<DataRow> rows = new ArrayList<DataRow>(){{
+		for(int i = 0; i < DataRow.MEMORY.size(); i++)
+			rows.add(new DataRow(DataRow.MEMORY.get(i)));
+		}};
 	
 	public static void main(String[] args){
 		new Exercise1();
@@ -30,8 +32,6 @@ public class Exercise1{
 	}
 	
 	private void readRows(){
-		rows = new ArrayList<DataRow>();
-		
 		try(BufferedReader reader = new BufferedReader(new FileReader("program.txt"))){
 			while(reader.ready()){
 				String line = reader.readLine();
@@ -49,14 +49,33 @@ public class Exercise1{
 	} 
 	
 	private boolean checkCommand(String[] d){
-		return false;
+		if(DataRow.COMMANDS.containsKey(d[0])){
+			if(d[0].equals("LDA")){
+				for(int i = DataRow.MEMORY.size(); i > 0; i++){
+					if(rows.get(DataRow.MEMORY.get(i)).getKey().equals("EMPTY"))
+						rows.remove(rows.getKey(DataRow.MEM));
+				}
+				return true;
+			}
+			else if(d[0].equals("ADD")){
+				rows.add(new DataRow("EH", "0000\t0010"));
+				return true;
+			}
+			else if(d[0].equals("OUT")){
+				rows.add(new DataRow("2H", "1110\tXXXX"));
+			}
+			else if(d[0].equals("HLT")){
+				rows.add(new DataRow("3H", "XXXX"));
+			}
+		}
+		return false;		
 	}
 	
 	
 	
 	
 	
-	private static class DataRow{
+	private class DataRow{
 
 		public final static HashMap<String, String> COMMANDS = 
 			new HashMap<String, String>(){{
@@ -81,15 +100,29 @@ public class Exercise1{
 		private String m_data;
 		private boolean full = false;
 
+		//data row containing command
 		public DataRow(String row, String key, String data){
-			this(row, key);
+			this(row);
+			m_key = key;
 			m_data = data;
+			
+			//OUT OR HLT
+			if(data.equals("")
+				m_data = "XXXX"
+			//LDA, ADD, OR SUB
+			else
+				m_data = data;
 		}
 		
-		public DataRow(String row, String key){
+		//data row containing binary data
+		public DataRow(String row, String data){
+			this(row);
+			m_data = data.substring(0,4)+"\t"+(data.substring(5,8));
+		}
+		
+		//default constructor that fills and sets row
+		public DataRow(String row){
 			m_row = row;
-			m_key = key;
-			m_data = "XXXX";
 			full = true;
 		}
 		
