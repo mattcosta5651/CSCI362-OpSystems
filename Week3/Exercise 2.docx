@@ -1,0 +1,66 @@
+﻿PART 1
+
+Process A takes 10 seconds to complete.  Process B takes 8 seconds to complete.  Process C takes 12 seconds to complete. All three processes are entirely CPU bound.  Ignoring the overhead involved in switching between processes, answer the following questions:
+
+How long will it take for all three processes to complete if they are executed at the same time on a single core machine?  Your solution should be accompanied by a timing diagram. 
+30 seconds
+
+How long will it take for all three processes to complete if they are executed at the same time on a dual core machine?  Your solution should be accompanied by a timing diagram. 
+
+
+
+
+18s
+
+How long will it take for all three processes to complete if they are executed at the same time on a quad core machine?  Your solution should be accompanied by a timing diagram. 
+
+
+
+
+12s
+
+Process A takes 10 seconds to complete.  Process B takes 8 seconds to complete.  Process C takes 12 seconds to complete. Process B and C are waiting for I/O 25 percent of the total time it takes for them to complete.  Process A is entirely CPU bound.  Ignoring the overhead involved in switching between processes, answer the following questions:
+
+How long will it take for all three processes to complete if they are executed at the same time on a single core machine?  Your solution should be accompanied by a timing diagram. 
+
+25s
+
+How long will it take for all three processes to complete if they are executed at the same time on a dual core machine?  Your solution should be accompanied by a timing diagram. 
+16s
+How long will it take for all three processes to complete if they are executed at the same time on a quad core machine?  Your solution should be accompanied by a timing diagram. 
+12s
+
+Process A takes 10 seconds to complete.  Process B takes 8 seconds to complete.  Process C takes 12 seconds to complete. Process B and C are waiting for I/O 25 percent of the total time it takes for them to complete.  Process A is entirely CPU bound.  Assume that the operating system will not allow a process to run on a core for more than 2 seconds without interrupting it and allowing another process to run.  Based on this information, please Answer the following questions:
+
+Ignoring the overhead involved in switching between processes, how long will it take for all three processes to complete if they are executed at the same time on a single core machine?  Your solution should be accompanied by a timing diagram.
+
+
+If it takes 0.5 seconds for the operating system to move a process from one state to another.  How long will it take for all three processes to complete if they are executed at the same time on a single core machine?  Be sure to take into account ALL state transitions. 
+In question #2 above, how many times is Process C placed in the waiting state? How many times is Process C placed in the ready state?
+If it takes time to transition processes form one state to another, why would an operating system choose to put a limit on the time a process can use a core before getting swapped out for another process?  Why might it be a good idea to make this time limit short? Why might it be a bad idea to make this time limit short?
+	The short time limit allows all processes to begin running and the illusion of all of them running simultaneously; this sacrifices time of completion and overhead or the illusion of multi-programming. 
+
+One common way for users to interact with the operating system is via the command line interface.  In Windows this is typically called the Command Prompt, in Linux it is called the Console, and on Mac it is called the Terminal.  Do some research online and find the commands that are used to perform the following operations on each of these three operating systems:
+
+Action	Linux (bash)	Windows	Mac
+print the working directory	
+		pwd/dir/pwd
+list all the files in the working directory	
+		ls/ls(DIR *.*)/ls
+change the working directory		
+		cd/cd/cd
+delete a file
+		rm/del/rm
+rename a file
+		mv Source-File ToRenameFile/ren/mv Source-File ToRenameFile
+list the name of the current user			
+		whoami/whoami/whoami
+view the contents of a text file
+		cat/type/cat
+
+
+PART 2
+
+We will all work together on an in class, step-by-step, multi-programming example using two programs written for our simple computer architecture.
+
+
