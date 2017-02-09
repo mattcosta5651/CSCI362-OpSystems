@@ -15,7 +15,6 @@ public class Seashell{
 		System.out.println("Welcome to seashell!");
 		System.out.print("seashell> ");
 		while(scanner.hasNext()){
-			System.out.print("seashell> ");
 			String command = scanner.nextLine();
 			Function function;
 			String[] line = command.split(" ");
@@ -28,6 +27,7 @@ public class Seashell{
 				function = new Function(command, this);
 				function.execute(dir);
 			}
+			System.out.print("seashell> ");
 		}
 	}
 
